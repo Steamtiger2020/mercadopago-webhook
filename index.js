@@ -96,9 +96,13 @@ app.post("/create-checkout", async (req, res) => {
     const data = await response.json();
 
     if (!response.ok) {
-      console.error("❌ Erro no Mercado Pago:", data);
-      return res.status(500).json({ error: "Erro ao criar preferência no MP" });
-    }
+  console.error("❌ Erro no Mercado Pago (detalhado):", data);
+
+  return res.status(500).json({
+    error: "Erro ao criar preferência no MP",
+    details: data
+  });
+}
 
     console.log("✅ Link de pagamento gerado:", data.init_point);
     

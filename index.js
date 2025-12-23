@@ -1,10 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 const admin = require("firebase-admin");
 const fetch = require("node-fetch"); // Caso precise no Node antigo, ou nativo no Node 18+
 
 console.log("🚀 Iniciando servidor...");
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 // 🔎 Verificar variável de ambiente
